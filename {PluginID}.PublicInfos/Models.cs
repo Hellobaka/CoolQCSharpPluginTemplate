@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using {PluginID}.Sdk.Cqp.EventArgs;
 
-namespace PublicInfos
+namespace {PluginID}.PublicInfos
 {
     public interface IOrderModel
     {

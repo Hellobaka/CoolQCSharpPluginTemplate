@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using {PluginID}.Sdk.Cqp.Model;
 
-namespace PublicInfos
+namespace {PluginID}.PublicInfos
 {
     public static class CommonHelper
     {

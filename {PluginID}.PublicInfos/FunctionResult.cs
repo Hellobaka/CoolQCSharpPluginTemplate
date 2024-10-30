@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PublicInfos
+namespace {PluginID}.PublicInfos
 {
     /// <summary>
     /// 函数处理结果
