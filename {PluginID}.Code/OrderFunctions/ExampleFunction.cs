@@ -10,13 +10,15 @@ namespace {PluginID}.Code.OrderFunctions
 {
     public class ExampleFunction : IOrderModel
     {
-        public bool ImplementFlag { get; set; } = false;
+        public bool ImplementFlag { get; set; } = true;
+
+        public int Priority { get; set; } = 10;
         
-        public string GetOrderStr() => "这里输入触发指令";
+        public string GetCommand() => "这里输入触发指令";
 
-        public bool Judge(string destStr) => destStr.Replace("＃", "#").StartsWith(GetOrderStr());//这里判断是否能触发指令
+        public bool CanExecute(string destStr) => destStr.Replace("＃", "#").StartsWith(GetOrderStr());//这里判断是否能触发指令
 
-        public FunctionResult Progress(CQGroupMessageEventArgs e)//群聊处理
+        public FunctionResult Execute(CQGroupMessageEventArgs e)//群聊处理
         {
             FunctionResult result = new FunctionResult
             {
@@ -27,13 +29,13 @@ namespace {PluginID}.Code.OrderFunctions
             {
                 SendID = e.FromGroup,
             };
+            result.SendObject.Add(sendText);
 
             sendText.MsgToSend.Add("这里输入需要发送的文本");
-            result.SendObject.Add(sendText);
             return result;
         }
 
-        public FunctionResult Progress(CQPrivateMessageEventArgs e)//私聊处理
+        public FunctionResult Execute(CQPrivateMessageEventArgs e)//私聊处理
         {
             FunctionResult result = new FunctionResult
             {
@@ -44,9 +46,9 @@ namespace {PluginID}.Code.OrderFunctions
             {
                 SendID = e.FromQQ,
             };
-
-            sendText.MsgToSend.Add("这里输入需要发送的文本");
             result.SendObject.Add(sendText);
+            
+            sendText.MsgToSend.Add("这里输入需要发送的文本");
             return result;
         }
     }

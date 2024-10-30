@@ -7,9 +7,13 @@ namespace PublicInfos
     public interface IOrderModel
     {
         bool ImplementFlag { get; set; }
-        string GetOrderStr();
-        bool Judge(string destStr);
-        FunctionResult Progress(CQGroupMessageEventArgs e);
-        FunctionResult Progress(CQPrivateMessageEventArgs e);
+        /// <summary>
+        /// 优先级，越高越优先处理
+        /// </summary>
+        int Priority { get; set; }
+        string GetCommand();
+        bool CanExecute(string destStr);
+        FunctionResult Execute(CQGroupMessageEventArgs e);
+        FunctionResult Execute(CQPrivateMessageEventArgs e);
     }
 }

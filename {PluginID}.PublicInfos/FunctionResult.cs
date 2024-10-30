@@ -20,6 +20,7 @@ namespace PublicInfos
         /// </summary>
         public bool SendFlag { get; set; }
     }
+    
     public class SendText
     {
         /// <summary>
