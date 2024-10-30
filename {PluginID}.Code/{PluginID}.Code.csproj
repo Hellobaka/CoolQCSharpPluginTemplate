@@ -70,7 +70,7 @@
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>{PluginID}.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PublicInfos\PublicInfos.csproj">
+    <ProjectReference Include="..\{PluginID}.PublicInfos\{PluginID}.PublicInfos.csproj">
       <Project>{9ca41650-71f2-4f0c-9a80-9cdb5a7d593c}</Project>
       <Name>PublicInfos</Name>
     </ProjectReference>
