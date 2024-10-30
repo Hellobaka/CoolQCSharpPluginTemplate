@@ -63,7 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonHelper.cs" />
-    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="ConfigBase.cs" />
+    <Compile Include="AppConfig.cs" />
     <Compile Include="FunctionResult.cs" />
     <Compile Include="MainSave.cs" />
     <Compile Include="Models.cs" />
