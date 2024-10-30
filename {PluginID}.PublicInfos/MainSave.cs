@@ -2,7 +2,7 @@ using {PluginID}.Sdk.Cqp;
 using System.Collections.Generic;
 using System.IO;
 
-namespace PublicInfos
+namespace {PluginID}.PublicInfos
 {
     public static class MainSave
     {
