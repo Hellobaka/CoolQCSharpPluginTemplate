@@ -2,7 +2,7 @@
 using System.Threading;
 using {PluginID}.Sdk.Cqp.EventArgs;
 using {PluginID}.Sdk.Cqp.Interface;
-using PublicInfos;
+using {PluginID}.PublicInfos;
 
 namespace {PluginID}.UI
 {

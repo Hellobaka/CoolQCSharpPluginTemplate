@@ -1,6 +1,6 @@
 using {PluginID}.Sdk.Cqp.EventArgs;
 using {PluginID}.Sdk.Cqp.Interface;
-using PublicInfos;
+using {PluginID}.PublicInfos;
 using System;
 using System.IO;
 using System.Reflection;

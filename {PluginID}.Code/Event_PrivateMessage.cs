@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using {PluginID}.Sdk.Cqp.EventArgs;
-using PublicInfos;
+using {PluginID}.PublicInfos;
 
 namespace {PluginID}.Code
 {
@@ -18,9 +18,14 @@ namespace {PluginID}.Code
             };
             try
             {
-                foreach (var item in MainSave.Instances.Where(item => item.Judge(e.Message.Text)))
+                foreach (var item in MainSave.Instances.OrderByDescending(x => x.Priority)
+                    .Where(item => item.CanExecute(e.Message.Text)))
                 {
-                    return item.Progress(e);
+                    var r = item.Execute(e);
+                    if (r.Result && r.SendFlag)
+                    {
+                        return r;
+                    }
                 }
                 return result;
             }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using {PluginID}.Sdk.Cqp.EventArgs;
-using PublicInfos;
+using {PluginID}.PublicInfos;
 
 namespace {PluginID}.Code
 {
