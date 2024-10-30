@@ -15,7 +15,6 @@ namespace {PluginID}.Code
             MainSave.CQApi = e.CQApi;
             MainSave.CQLog = e.CQLog;
             MainSave.ImageDirectory = CommonHelper.GetAppImageDirectory();
-            ConfigHelper.ConfigFileName = Path.Combine(MainSave.AppDirectory, "Config.json");
             foreach (var item in Assembly.GetAssembly(typeof(Event_GroupMessage)).GetTypes())
             {
                 if (item.IsInterface)
@@ -26,11 +25,16 @@ namespace {PluginID}.Code
                     {
                         IOrderModel obj = (IOrderModel)Activator.CreateInstance(item);
                         if (obj.ImplementFlag == false)
-                            break;
+                            continue;
                         MainSave.Instances.Add(obj);
                     }
                 }
             }
+
+            e.CQLog.Info("初始化", "加载配置");
+            AppConfig appConfig = new(Path.Combine(MainSave.AppDirectory, "Config.json"));
+            appConfig.LoadConfig();
+            appConfig.EnableAutoReload();
         }
     }
 }
