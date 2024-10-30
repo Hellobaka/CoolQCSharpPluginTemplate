@@ -43,42 +43,6 @@ namespace PublicInfos
             return numStr;
         }
 
-        /// <summary>
-        /// 下载文件
-        /// </summary>
-        /// <param name="url">网址</param>
-        /// <param name="path">目标文件夹</param>
-        /// <param name="overwrite">重复时是否覆写</param>
-        /// <returns></returns>
-        public static async Task<bool> DownloadFile(string url, string path, bool overwrite = false)
-        {
-            using var http = new HttpClient();
-            try
-            {
-                if (string.IsNullOrWhiteSpace(url))
-                {
-                    return false;
-                }
-
-                string fileName = GetFileNameFromURL(url);
-                if (!overwrite && File.Exists(Path.Combine(path, fileName)))
-                {
-                    return true;
-                }
-
-                var r = await http.GetAsync(url);
-                byte[] buffer = await r.Content.ReadAsByteArrayAsync();
-                Directory.CreateDirectory(path);
-                File.WriteAllBytes(Path.Combine(path, fileName), buffer);
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                return false;
-            }
-        }
-
         public static string GetFileNameFromURL(this string url)
         {
             return url.Split('/').Last().Split('?').First();
