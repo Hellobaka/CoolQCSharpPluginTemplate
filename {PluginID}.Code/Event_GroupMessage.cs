@@ -22,7 +22,7 @@ namespace {PluginID}.Code
                     .Where(item => item.CanExecute(e.Message.Text)))
                 {
                     var r = item.Execute(e);
-                    if (r.Result && r.SendFlag)
+                    if (r.Result)
                     {
                         return r;
                     }
