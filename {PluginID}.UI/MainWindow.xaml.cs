@@ -23,6 +23,43 @@ namespace {PluginID}.UI
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            Instance = this;
+            if (App.Debug)
+            {
+                LoadDebug();
+            }
+        }
+
+        public static MainWindow Instance { get; private set; }
+        
+        private bool FormLoaded { get; set; }
+        
+        private void LoadDebug()
+        {
+            MainSave.AppDirectory = Path.GetFullPath(".");
+            MainSave.ImageDirectory = CommonHelper.GetAppImageDirectory();
+
+            AppConfig appConfig = new(Path.Combine(MainSave.AppDirectory, "Config.json"));
+            appConfig.LoadConfig();
+            appConfig.EnableAutoReload();
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!FormLoaded)
+            {
+                FormLoaded = true;
+                Topmost = true;
+                await Task.Delay(500);
+                Topmost = false;
+            }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }

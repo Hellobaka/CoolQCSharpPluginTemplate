@@ -8,25 +8,34 @@ namespace {PluginID}.UI
 {
     public class Event_MenuCall : IMenuCall
     {
-        private MainWindow window = null;
+        private App App { get; set; }
+
         public void MenuCall(object sender, CQMenuCallEventArgs e)
         {
             try
             {
-                if (window == null)
+                if (App == null)
                 {
                     Thread thread = new Thread(() =>
                     {
-                        window = new MainWindow();
-                        window.Closing += Window_Closing;
-                        window.ShowDialog();
+                        try
+                        {
+                            App = new();
+                            App.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                            App.InitializeComponent();
+                            App.Run();
+                        }
+                        catch (Exception exc)
+                        {
+                            MainSave.CQLog?.Error("UI异常", exc.ToString());
+                        }
                     });
                     thread.SetApartmentState(ApartmentState.STA);
                     thread.Start();
                 }
                 else
                 {
-                    window.Activate();
+                    MainWindow.Instance.Dispatcher.BeginInvoke(new Action(MainWindow.Instance.Show));
                 }
             }
             catch (Exception exc)
@@ -40,7 +49,7 @@ namespace {PluginID}.UI
         ///</summary>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            window = null;
+            MainWindow.Instance.Dispatcher.BeginInvoke(new Action(MainWindow.Instance.Hide));
         }
     }
 }
