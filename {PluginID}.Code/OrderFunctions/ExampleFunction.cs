@@ -16,7 +16,7 @@ namespace {PluginID}.Code.OrderFunctions
         
         public string GetCommand() => "这里输入触发指令";
 
-        public bool CanExecute(string destStr) => destStr.Replace("＃", "#").StartsWith(GetCommand());//这里判断是否能触发指令
+        public bool CanExecute(string input) => input.Replace("＃", "#").StartsWith(GetCommand());//这里判断是否能触发指令
 
         public FunctionResult Execute(CQGroupMessageEventArgs e)//群聊处理
         {

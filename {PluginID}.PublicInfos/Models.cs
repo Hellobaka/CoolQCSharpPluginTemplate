@@ -12,7 +12,7 @@ namespace {PluginID}.PublicInfos
         /// </summary>
         int Priority { get; set; }
         string GetCommand();
-        bool CanExecute(string destStr);
+        bool CanExecute(string input);
         FunctionResult Execute(CQGroupMessageEventArgs e);
         FunctionResult Execute(CQPrivateMessageEventArgs e);
     }
