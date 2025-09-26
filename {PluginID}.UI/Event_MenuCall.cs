@@ -3,6 +3,8 @@ using System.Threading;
 using {PluginID}.Sdk.Cqp.EventArgs;
 using {PluginID}.Sdk.Cqp.Interface;
 using {PluginID}.PublicInfos;
+using System.Windows;
+
 
 namespace {PluginID}.UI
 {
