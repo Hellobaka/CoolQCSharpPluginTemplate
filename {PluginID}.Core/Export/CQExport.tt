@@ -63,9 +63,6 @@
 		TemplateBuilder.WriteLine (1, "/// </summary>");
 		TemplateBuilder.WriteLine (1, "static CQEventExport ()");
 		TemplateBuilder.WriteLine (1, "{");
-		TemplateBuilder.WriteLine (2, "// 初始化 Costura.Fody");
-		TemplateBuilder.WriteLine (2, "CosturaUtility.Initialize ();");
-		TemplateBuilder.WriteLine (2);
 		TemplateBuilder.WriteLine (2, "Type appDataType = typeof (AppData);");
 		TemplateBuilder.WriteLine (2, "appDataType.GetRuntimeProperty (\"UnityContainer\").GetSetMethod (true).Invoke (null, new object[] { new UnityContainer () });");	
 		TemplateBuilder.WriteLine (2, "// 调用方法进行注册");

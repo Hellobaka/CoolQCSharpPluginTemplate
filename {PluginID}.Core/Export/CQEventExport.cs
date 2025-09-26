@@ -29,9 +29,6 @@ namespace {PluginID}.App.Export
 		/// </summary>	
 		static CQEventExport ()	
 		{	
-			// 初始化 Costura.Fody	
-			CosturaUtility.Initialize ();	
-			
 			Type appDataType = typeof (AppData);	
 			appDataType.GetRuntimeProperty ("UnityContainer").GetSetMethod (true).Invoke (null, new object[] { new UnityContainer () });	
 			// 调用方法进行注册	
